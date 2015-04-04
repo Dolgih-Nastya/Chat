@@ -1,5 +1,14 @@
+<div id="user_nav">
+  <% if user_signed_in? %>
+      <h2>Signed in as <%= current_user.email %></h2>
+</div>
+<table id="registered_users">
 <% @users.each_with_index do |user, index| %>
+    <%if (index%2==0)%>
     <tr>
+    <%else%>
+    <tr class = "alt">
+    <%end%>
       <td><%= index +=1 %></td>
       <td><%= user.email %></td>
       <td>
@@ -8,3 +17,12 @@
       </td>
     </tr>
 <% end %>
+</table>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+
+<%else%>
+      <h2> Chatting </h2>
+      <%= link_to "Sign up", new_user_registration_path %>
+      <p></p>
+      <%= link_to "Sign in", new_user_session_path %>
+<%end%>

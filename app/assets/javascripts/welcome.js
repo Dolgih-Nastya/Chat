@@ -24,7 +24,6 @@ var ready = function () {
 
         chatWith: function (conversation_id) {
             chatBox.createChatBox(conversation_id);
-            alert (conversation_id);
             $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
             //$("#chatbox").focus();
         },
@@ -87,7 +86,6 @@ var ready = function () {
 
         createChatBox: function (conversation_id, minimizeChatBox) {
             if ($("#chatbox_" + conversation_id).length > 0) {
-                alert('length > 0')
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
                     chatBox.restructure();
@@ -96,7 +94,6 @@ var ready = function () {
                 return;
             }
 
-            alert('length < 0')
             $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>')
 
             $.get("conversations/" + conversation_id, function (data) {
